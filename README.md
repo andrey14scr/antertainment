@@ -22,5 +22,5 @@ Some usage desc
 ## Contributing
 
 - @alex-yas
-- @andrey14scr
+- @andrey14scr - Андрей Щербенок
 - @VladisloveSM
