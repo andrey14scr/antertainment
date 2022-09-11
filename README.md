@@ -23,4 +23,4 @@ Some usage desc
 
 - @alex-yas
 - @andrey14scr - Андрей Щербенок
-- @VladisloveSM
+- @VladisloveSM - Владислав Мазур
