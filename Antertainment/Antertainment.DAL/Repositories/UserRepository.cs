@@ -24,7 +24,7 @@ public sealed class UserRepository : BaseRepository, IEntityRepository<User>
         _databaseContext.Update(entity);
     }
 
-    public async Task Delete(User entity)
+    public void Delete(User entity)
     {
         _databaseContext.Remove(entity);
     }

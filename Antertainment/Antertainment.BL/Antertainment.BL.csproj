@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
       <PrivateAssets>all</PrivateAssets>
@@ -20,6 +21,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Antertainment.DAL\Antertainment.DAL.csproj" />
+    <ProjectReference Include="..\Antertainment.DTO\Antertainment.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mapper\" />
+    <Folder Include="UOW\" />
   </ItemGroup>
 
 </Project>

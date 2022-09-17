@@ -24,7 +24,7 @@ public sealed class ImageRepository : BaseRepository, IEntityRepository<Image>
         _databaseContext.Update(entity);
     }
 
-    public async Task Delete(Image entity)
+    public void Delete(Image entity)
     {
         _databaseContext.Remove(entity);
     }

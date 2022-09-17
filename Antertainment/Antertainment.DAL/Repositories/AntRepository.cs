@@ -29,7 +29,7 @@ public sealed class AntRepository : BaseRepository, IAntRepository
         _databaseContext.Update(entity);
     }
 
-    public async Task Delete(Ant entity)
+    public void Delete(Ant entity)
     {
         _databaseContext.Remove(entity);
     }

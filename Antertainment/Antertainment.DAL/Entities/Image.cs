@@ -11,6 +11,9 @@ public class Image
     [Required]
     public string FilePath { get; set; }
 
+    public Guid? UserId { get; set; }
+    public virtual User User { get; set; }
+
     public Guid? AntId { get; set; }
     public virtual Ant Ant { get; set; }
 }
