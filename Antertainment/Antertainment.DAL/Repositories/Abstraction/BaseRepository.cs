@@ -2,15 +2,15 @@
 
 public abstract class BaseRepository : ITransactionalRepository
 {
-    protected readonly DatabaseContext _databaseContext;
+    protected readonly DatabaseContext Сontext;
 
-    protected BaseRepository(DatabaseContext databaseContext)
+    protected BaseRepository(DatabaseContext сontext)
     {
-        _databaseContext = databaseContext;
+        Сontext = сontext;
     }
 
     public async Task SaveChanges()
     {
-        await _databaseContext.SaveChangesAsync();
+        await Сontext.SaveChangesAsync();
     }
 }

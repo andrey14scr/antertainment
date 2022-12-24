@@ -2,14 +2,16 @@
 
 namespace Antertainment.DAL.Entities;
 
-public class Image
+public class Image : BaseEntity
 {
-    public Guid Id { get; set; }
     [MaxLength(100)]
     public string FileName { get; set; }
+
     [MaxLength(255)]
     [Required]
     public string FilePath { get; set; }
+
+    public bool IsPrimary { get; set; }
 
     public Guid? UserId { get; set; }
     public virtual User User { get; set; }

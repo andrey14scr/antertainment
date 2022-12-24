@@ -5,32 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Antertainment.DAL.Repositories;
 
-public sealed class AntRepository : BaseRepository, IAntRepository
+public sealed class AntRepository : EntityRepository<Ant>, IAntRepository
 {
-    public AntRepository(DatabaseContext databaseContext) : base(databaseContext) { }
+    public AntRepository(DatabaseContext сontext) : base(сontext) { }
 
-    public async Task Add(Ant entity)
+    public async Task<IEnumerable<Ant>> GetAll(int take, int skip, bool includeAllImages)
     {
-        await _databaseContext.AddAsync(entity);
-    }
-
-    public async Task<Ant> GetById(Guid id)
-    {
-        return await _databaseContext.Ants.AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
-    }
-
-    public async Task<IList<Ant>> GetAll()
-    {
-        return await _databaseContext.Ants.AsNoTracking().ToListAsync();
-    }
-
-    public void Update(Ant entity)
-    {
-        _databaseContext.Update(entity);
-    }
-
-    public void Delete(Ant entity)
-    {
-        _databaseContext.Remove(entity);
+        return await Сontext.Ants.Include(a => a.Images.Where(i => i.IsPrimary)).Take(take).Skip(skip).AsNoTracking().ToListAsync();
     }
 }

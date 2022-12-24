@@ -5,27 +5,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Antertainment.DAL.Repositories;
 
-public sealed class UserRepository : BaseRepository, IEntityRepository<User>
+public sealed class UserRepository : EntityRepository<User>, IUserRepository
 {
-    public UserRepository(DatabaseContext databaseContext) : base(databaseContext) { }
-
-    public async Task Add(User entity)
+    public UserRepository(DatabaseContext сontext) : base(сontext)
     {
-        await _databaseContext.AddAsync(entity);
     }
 
-    public async Task<User> GetById(Guid id)
+    public async Task<User> GetByCredentials(string loginName, string password)
     {
-        return await _databaseContext.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id == id);
+        return await Сontext.Users.Include(u => u.Role)
+            .FirstOrDefaultAsync(u => (u.UserName == loginName || u.Email == loginName) && u.Password == password);
     }
 
-    public void Update(User entity)
+    public bool CheckUserUnique(params string[] loginNames)
     {
-        _databaseContext.Update(entity);
-    }
-
-    public void Delete(User entity)
-    {
-        _databaseContext.Remove(entity);
+        return Сontext.Users.Any(u => loginNames.Contains(u.Email) || loginNames.Contains(u.UserName));
     }
 }

@@ -1,9 +1,11 @@
-﻿namespace Antertainment.DAL.Repositories.Abstraction;
+﻿using Antertainment.DAL.Entities;
 
-public interface IEntityRepository<T> : ITransactionalRepository
+namespace Antertainment.DAL.Repositories.Abstraction;
+
+public interface IEntityRepository<T> : ITransactionalRepository where T : BaseEntity
 {
-    Task Add(T entity);
+    Task<T> Create(T entity);
     Task<T> GetById(Guid id);
-    void Update(T entity);
-    void Delete(T entity);
+    T Update(T entity);
+    T Delete(T entity);
 }

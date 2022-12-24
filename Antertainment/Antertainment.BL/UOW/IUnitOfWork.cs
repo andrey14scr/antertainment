@@ -7,5 +7,6 @@ public interface IUnitOfWork
 {
     public IAntRepository AntRepository { get; }
     public IEntityRepository<Image> ImageRepository { get; }
-    public IEntityRepository<User> UserRepository { get; }
+    public IUserRepository UserRepository { get; }
+    public IEntityRepository<Role> RoleRepository { get; }
 }

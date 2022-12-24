@@ -4,5 +4,5 @@ namespace Antertainment.DAL.Repositories.Abstraction;
 
 public interface IAntRepository : IEntityRepository<Ant>
 {
-    Task<IList<Ant>> GetAll();
+    Task<IEnumerable<Ant>> GetAll(int take, int skip, bool includeAllImages);
 }

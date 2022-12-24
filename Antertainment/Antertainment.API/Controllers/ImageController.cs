@@ -1,12 +1,14 @@
 ﻿using Antertainment.BL.Abstraction;
 using Antertainment.DTO;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Antertainment.API.Controllers;
 
 [Route("[controller]")]
 [ApiController]
+[Authorize]
 public class ImageController : ControllerBase
 {
     private readonly IImageService _imageService;
@@ -30,7 +32,7 @@ public class ImageController : ControllerBase
             _logger.Information("GetImage has finished.");
             return image;
         }
-        catch (Exception e)
+        catch
         {
             _logger.Error("Error while GetImage execution.");
             throw;
